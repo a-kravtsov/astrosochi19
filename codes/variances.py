@@ -37,7 +37,7 @@ def ddddvar(lk, **kwargs):
     W_THX = 3.*(X*np.sin(X)-3./X*(np.sin(X)-X*np.cos(X)))/X**2
     return W_THx*W_THX*k**3*Pka
 
-# now variances for Neal's smoothed top-hat filter 
+# now variances for Neal Dalal's smoothed top-hat filter 
 a = 0.16; a2 = a*a
 def dvars(lk, **kwargs):
     k = 10.**lk; x = k * kwargs['R']

@@ -102,8 +102,6 @@ class simplest_model(object):
         output: total mass accretion rate in Msun /Gyr
         """
         self.Mh = Mcurrent
-        # this equation is eq. 3-4 of Krumholz & Dekel 2012
-        #mdot = 1.06e12*(Mcurrent/1.e12)**1.14 *self.dDdt/(self.gr*self.gr)
         tau_acc = 0.175 * t**1.8 * (Mcurrent/1.e12)**(-0.1)
         mdot = Mcurrent / tau_acc
         return mdot

@@ -103,10 +103,10 @@ class simplest_model(object):
         """
         self.Mh = Mcurrent
         # this equation is eq. 3-4 of Krumholz & Dekel 2012
-        #dummy = 1.06e12*(Mcurrent/1.e12)**1.14 *self.dDdt/(self.gr*self.gr)
-        dummy = Mcurrent / (0.42 * t**(1.667))
-
-        return dummy
+        #mdot = 1.06e12*(Mcurrent/1.e12)**1.14 *self.dDdt/(self.gr*self.gr)
+        tau_acc = 0.175 * t**1.8 * (Mcurrent/1.e12)**(-0.1)
+        mdot = Mcurrent / tau_acc
+        return mdot
 
     def Mg_in(self, t):
         dummy = self.fbuni*self.fg_in(t)*self.dMhdt(self.Mh,t)
@@ -222,7 +222,7 @@ class simplest_model(object):
     
         # plot SFR(t)
         ax[1].set_xlabel(r'$t\ \rm (Gyr)$'); ax[1].set_ylabel(r'$\rm\ SFR\ (M_\odot/yr)$')
-        ax[1].set_xlim(0.,tu); ax[1].set_ylim(1.e-2,50.)
+        ax[1].set_xlim(0.,tu); ax[1].set_ylim(1.e-4,50.)
         ax[1].set_yscale('log')
         ax[1].yaxis.set_label_position('right')
 
